@@ -53,7 +53,7 @@ else:
     st.sidebar.warning("Please select a contact method.")
 
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("Shop")
+    st.switch_page("pages/Shop.py")
 
 st.sidebar.markdown("""
 <blockquote style="opacity: 100%;
