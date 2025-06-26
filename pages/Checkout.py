@@ -10,7 +10,7 @@ if not cart:
     if st.button("🛍️ Go to Shop"):
         st.switch_page("pages/Shop.py")
     if st.button("🏠 Go to main page"):
-        st.switch_page("Home")
+        st.switch_page("Home.py")
 else:
     st.subheader("Cart Items:")
     total = 0
@@ -28,6 +28,6 @@ else:
 
 if cart:
     if st.button("🔙 Back to Shop"):
-        st.switch_page("Shop")
+        st.switch_page("pages/Shop.py")
     if st.button("🏠 Back to Home page"):
-        st.switch_page("Home")
+        st.switch_page("Home.py")
