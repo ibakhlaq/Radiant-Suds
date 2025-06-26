@@ -86,4 +86,4 @@ if st.button("🏠 Back to Home"):
 
 if st.session_state.needs_rerun:
     st.session_state.needs_rerun = True
-    st.experimental_rerun()
+    st.rerun()
