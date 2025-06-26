@@ -52,9 +52,8 @@ elif contact == "Phone":
 else:
     st.sidebar.warning("Please select a contact method.")
 
-
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("shop.py")
+    st.switch_page("Shop")
 
 st.sidebar.markdown("""
 <blockquote style="opacity: 100%;
@@ -71,7 +70,6 @@ st.sidebar.markdown("""
                       ">sector C<br>
               house no.294<br></div>
 </Address></tt></blockquote>""", unsafe_allow_html = True)
-
 
 sentiment_mapping = ["one", "two", "three", "four", "five"]
 selected = st.sidebar.feedback("stars")
