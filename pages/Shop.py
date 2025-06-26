@@ -79,10 +79,10 @@ if st.session_state.show_toast:
 
 st.markdown("---")
 if st.button("🛒 View Cart / Checkout"):
-    st.switch_page("pages/Checkout.py")
+    st.switch_page("Checkout.py")
 
 if st.button("🏠 Back to Home"):
-    st.switch_page("app.py")
+    st.switch_page("Home.py")
 
 if st.session_state.needs_rerun:
     st.session_state.needs_rerun = False

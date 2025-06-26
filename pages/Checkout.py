@@ -27,6 +27,6 @@ else:
         st.session_state.cart = {}
 if cart:
     if st.button("🔙 Back to Shop"):
-        st.switch_page("pages/shop.py")
+        st.switch_page("shop.py")
     if st.button("🏠 Back to Home page"):
         st.switch_page("Home.py")

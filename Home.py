@@ -54,7 +54,7 @@ else:
 
 
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("pages/shop.py")
+    st.switch_page("shop.py")
 
 st.sidebar.markdown("""
 <blockquote style="opacity: 100%;
