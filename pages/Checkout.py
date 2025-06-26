@@ -8,7 +8,7 @@ cart = st.session_state.get("cart", {})
 if not cart:
     st.warning("Your cart is empty.")
     if st.button("🛍️ Go to Shop"):
-        st.switch_page("pages/shop.py")
+        st.switch_page("shop.py")
     if st.button("🏠Go to main page"):
         st.switch_page("Home.py")
 else:
