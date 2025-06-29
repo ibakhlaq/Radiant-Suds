@@ -5,7 +5,6 @@ st.set_page_config(
     page_icon="🛁",
     layout="centered"
 )
-
 st.markdown("""
     <style>
         .title-card {
@@ -54,22 +53,6 @@ else:
 
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
     st.switch_page("pages/Shop.py")
-
-st.sidebar.markdown("""
-<blockquote style="opacity: 100%;
-                   background: bisque;
-                   border-radius: 20px;
-                   display: flex;
-                   justify-content: center;"><tt style="font-size: large;"><Address>
-    <hr style="margin: 50px;">
-    phone number : 03224001910<br>
-    email : nida.akhlaq@gmail.com<br>
-    address : askari 10<br>
-    <div style="margin-top:0px ;
-                       margin-left: 87px;
-                      ">sector C<br>
-              house no.294<br></div>
-</Address></tt></blockquote>""", unsafe_allow_html = True)
 
 sentiment_mapping = ["one", "two", "three", "four", "five"]
 selected = st.sidebar.feedback("stars")

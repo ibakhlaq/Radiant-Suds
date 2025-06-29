@@ -4,6 +4,8 @@ import time
 st.set_page_config(page_title="Shop", layout="centered", page_icon="🛒")
 st.title("🧺 Products")
 
+session = False
+
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 if "show_toast" not in st.session_state:
@@ -33,8 +35,7 @@ else:
 
 if st.sidebar.button("🧹 Clear Cart"):
     st.session_state.cart.clear()
-    st.session_state.needs_rerun = True
-
+    session = True
 for item in list(st.session_state.cart.keys()):
     if st.sidebar.button(f"Remove {item}", key=f"remove_{item}"):
         del st.session_state.cart[item]
@@ -50,7 +51,7 @@ for i, (item, price) in enumerate(products.items()):
     with col2:
         if st.button(f"Add {item}", key=f"add_{item}"):
             st.session_state.cart[item] = st.session_state.cart.get(item, 0) + 1
-            st.session_state.needs_rerun = True
+            session = True
 
 if st.session_state.show_toast:
     st.markdown("""
@@ -84,6 +85,5 @@ if st.button("🛒 View Cart / Checkout"):
 if st.button("🏠 Back to Home"):
     st.switch_page("Home")
 
-if st.session_state.needs_rerun:
-    st.session_state.needs_rerun = True
+if session == True:
     st.rerun()
