@@ -23,6 +23,20 @@ st.markdown("""
 
 st.markdown("""
     <style>
+        .logo-top {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+    </style>
+    <div class="logo-top">
+        <img src="https://i.ibb.co/nsbC1w9K/radiantsuds.png" width="60">
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
         /* ✅ Logo positioning */
         .custom-logo {
             position: fixed;
@@ -133,13 +147,13 @@ with col1:
     if st.sidebar.button("Sign Up"):
         st.session_state.is_logged_in = False
         st.session_state.user = None
-        st.switch_page("pages/signup.py")
+        st.switch_page("radiantsuds.streamlit.app/signup")
 
 with col2:
     if st.sidebar.button("Login"):
         st.session_state.is_logged_in = False
         st.session_state.user = None
-        st.switch_page("pages/login.py")
+        st.switch_page("radiantsuds.streamlit.app/login")
 
 # Styling
 
@@ -234,7 +248,7 @@ else:
 
 # Shop Button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("pages/Shop.py")
+    st.switch_page("radiantsuds.streamlit.app/Shop")
 
 # Sidebar Feedback Form (fixed version with full style)
 with st.sidebar:
