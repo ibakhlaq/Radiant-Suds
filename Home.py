@@ -12,42 +12,78 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
 )
+# Custom Logo
+st.markdown("""
+    <style>
+        body {
+            background-color: #f0f8ff;  /* Light blue background */
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 st.markdown("""
     <style>
-        /* Add logo to the far top-left of the screen */
+        /* ✅ Logo positioning */
         .custom-logo {
             position: fixed;
             top: 12px;
-            left: 8px;
+            left: 50px;  /* Adjust this to move logo to the right */
             z-index: 1000;
-            background-color: transparent;
-            padding: 0;
-            border-radius: 8px;
-            box-shadow: none;
             transition: opacity 0.3s ease-in-out;
             cursor: pointer;
         }
-        .custom-logo:hover {
-            opacity: 1;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-            background-color: #f0f0f0;
-            padding: 4px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        .stTextInput > div > input {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
         }
+        .stTextInput > div > input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        .stTextInput > div > label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .stTextInput > div {
+            margin-bottom: 20px;
+        }
+        [data-baseweb="select"] {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+        }
+        [data-baseweb="select"]:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        [data-baseweb="select"] > label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        [data-baseweb="select"] > div {
+            margin-bottom: 20px;
+        }
+        /* ✅ Logo image styling */
         .custom-logo img {
             height: 36px;
             opacity: 0.95;
+            padding: 10px;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .custom-logo img:hover {
+
+        /* ✅ Hover effects */
+        .custom-logo:hover img {
             opacity: 1;
             transform: scale(1.05);
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
+
         .stButton>button {
             background-color: #8BC34A;
             color: white;
@@ -55,21 +91,20 @@ st.markdown("""
             padding: 10px 20px;
             font-size: 16px;
             font-weight: bold;
-            transition: background-color 0.3s ease-in-out;
-            transition: color 0.3s ease-in-out;
-            transition: box-shadow 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-transform: uppercase;
             border: none;
             cursor: pointer;
         }
+
         .stButton>button:hover {
             background-color: #C7B8EA;
             color: #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        [data-testid="collapsedControl"] {
-            margin-left: 40px;
-        }
+
+        /* ❌ Skip trying to move this – leave as is */
+        /* [data-testid="collapsedControl"] won't reliably shift position */
     </style>
 
     <div class="custom-logo">
@@ -90,7 +125,8 @@ st.sidebar.image("https://i.ibb.co/nsbC1w9K/radiantsuds.png", width=220)
 # Check if user is logged in
 if "is_logged_in" not in st.session_state or not st.session_state.is_logged_in:
     st.warning("Please log in to access the full features of Radiant Suds.")
-
+else:
+    st.success(f"Welcome back, {st.session_state.user}!")
 col1, col2 = st.sidebar.columns([1, 3])
 
 with col1:

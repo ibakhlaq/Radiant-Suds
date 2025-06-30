@@ -60,6 +60,54 @@ st.markdown("""
             outline: none;
             box-shadow: none;
         }
+        .stTextInput > div > input {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .stTextInput > div > input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        .stTextInput > div > label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .stTextInput > div {
+            margin-bottom: 20px;
+        }
+        [data-baseweb="select"] {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+        }
+        [data-baseweb="select"]:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        [data-baseweb="select"] > label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        [data-baseweb="select"] > div {
+            margin-bottom: 20px;
+        }
+        .element-container:has(.stAlert) {
+            background-color: #f9ffff;
+            border-left: 6px solid #0bb;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 5px auto;
+            max-width: 700px;
+            font-size: 17px;
+        }
+        .element-container:has(.stAlert) .stAlert > div > p {
+            margin: 0;
+        }
     </style>
     """, unsafe_allow_html=True)
 
@@ -67,10 +115,10 @@ st.markdown("""
 cart = st.session_state.get("cart", {})
 
 if not cart:
-    st.warning("Your cart is empty.")
-    if st.button("", key="go_to_shop_empty"):
+    st.error("Your cart is empty.")
+    if st.button("GO TO SHOP", key="go_to_shop_empty"):
         st.switch_page("pages/Shop.py")
-    if st.button("", key="go_to_home_empty"):
+    if st.button("GO TO MAIN PAGE", key="go_to_home_empty"):
         st.switch_page("Home.py")
 else:
     st.subheader("Cart Items:")
@@ -87,13 +135,14 @@ else:
     st.markdown(f"### : **RS. {total}**")
 
     # Call to Action Section
-    if st.button("", key="place_order"):
+    if st.button("PLACE ORDER", key="place_order"):
         st.success("Thank you for your purchase!")
         st.session_state.cart = {}
+        st.rerun()
 
     # Navigation Section
     if cart:
-        if st.button("", key="back_to_shop"):
-            st.switch_page("pages/Shop.py")
-        if st.button("", key="back_to_home"):
-            st.switch_page("Home.py")
+        if st.button("BACK TO SHOP", key="back_to_shop"):
+            st.switch_page("radiantsuds.streamlit.app/Shop")
+        if st.button("BACK TO HOME", key="back_to_home"):
+            st.switch_page("radiantsuds.streamlit.app")
