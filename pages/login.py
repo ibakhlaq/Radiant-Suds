@@ -62,7 +62,7 @@ with st.form("login_form"):
             st.session_state.user = username
             st.session_state.is_logged_in = True
             st.success("Login successful!")
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Invalid username or password.")
 
