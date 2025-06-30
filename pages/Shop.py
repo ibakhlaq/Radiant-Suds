@@ -1,9 +1,91 @@
 import streamlit as st
 import time
+import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Shop", layout="centered", page_icon="🛒")
+st.set_page_config(page_title="Shop", layout="centered", page_icon="🛒",initial_sidebar_state = "expanded")
 st.title("🧺 Products")
 
+st.markdown("""
+    <style>
+        .stButton > button {
+            background-color: #8BC34A;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+        }
+        .stButton > button:hover {
+            background-color: #C7B8EA;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .stButton > button:active {
+            background-color: #C7B8EA;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transform: scale(0.98);
+            transition: transform 0.2s ease-in-out;
+        }
+        .stButton > button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        .stButton > button:disabled {
+            background-color: #ccc;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .stButton > button:disabled:hover {
+            background-color: #ccc;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .stButton > button:disabled:active {
+            background-color: #ccc;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        .stButton > button:disabled:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+# Custom component to show a toast message
+def show_toast(message):
+    components.html(f"""
+    <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        z-index: 9999;
+        animation: fadeOut 3s forwards;
+    ">
+        <strong>{message}</strong>
+    </div>
+    <style>
+    @keyframes fadeOut {{
+        0% {{opacity: 1;}}
+        100% {{opacity: 0;}}
+    }}
+    </style>
+    """, height=100)
 session = False
 
 if "cart" not in st.session_state:
@@ -39,7 +121,7 @@ if st.sidebar.button("🧹 Clear Cart"):
 for item in list(st.session_state.cart.keys()):
     if st.sidebar.button(f"Remove {item}", key=f"remove_{item}"):
         del st.session_state.cart[item]
-        st.session_state.needs_rerun = True
+        session = True
 
 if st.sidebar.button("Confirm Cart"):
     st.session_state.show_toast = True
@@ -80,10 +162,10 @@ if st.session_state.show_toast:
 
 st.markdown("---")
 if st.button("🛒 View Cart / Checkout"):
-    st.switch_page("Checkout")
+    st.switch_page("pages/Checkout.py")
 
 if st.button("🏠 Back to Home"):
-    st.switch_page("Home")
+    st.switch_page("Home.py")
 
 if session == True:
     st.rerun()
