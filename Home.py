@@ -233,7 +233,7 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("pages/Shop")
+    st.markdown("""<meta http-equiv="refresh" content="0; url='pages/Shop.py'" />""", unsafe_allow_html=True)
 
 # Feedback section
 with st.sidebar:
