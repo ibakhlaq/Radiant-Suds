@@ -1,6 +1,8 @@
 import streamlit as st
 import json
 import os
+import time
+import webbrowser as wb
 
 # Ensure necessary JSON files exist before anything else
 if not os.path.exists('users.json'):
@@ -46,9 +48,9 @@ st.markdown("""
 
 # If already logged in, redirect to home or wherever
 if st.session_state.get("is_logged_in"):
-    st.success(f"Welcome back, {st.session_state.user}!")
-    st.stop()
-
+    st.success(f"Welcome back, {st.session_state.get('user', 'User')}!")
+    time.sleep(0.5)
+    st.switch_page("Home.py")
 # Login form
 with st.form("login_form"):
     username = st.text_input("Username", key="username")
@@ -59,18 +61,18 @@ with st.form("login_form"):
         with open("users.json", "r") as f:
             users = json.load(f)
 
-        if username in users and users[username] == password:
+        match = next((user for user in users if user["username"] == username and user["password"] == password), None)
+        if match:
             st.session_state.user = username
             st.session_state.is_logged_in = True
-            st.success("Login successful!")
-            st.rerun()
+            st.success(f"Login successful!")
+            time.sleep(1)
+            st.switch_page("Home.py")
         else:
             st.error("Invalid username or password.")
-
 # Register link
-st.markdown("""
-    <p style='text-align: center; color: #064b4f'>
-        Don't have an account? 
-        <a href='radiantsuds.streamlit.app/signup'>Register here</a>
-    </p>
-""", unsafe_allow_html=True)
+st.text("Don't have an account?")
+if st.button("Sign Up"):
+    st.session_state.is_logged_in = False
+    st.session_state.user = None
+    st.switch_page("pages/signup.py")

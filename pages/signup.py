@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import os
+import webbrowser as wb
 
 # Ensure users.json exists
 if not os.path.exists('users.json'):

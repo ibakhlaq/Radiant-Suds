@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 import os
+import webbrowser as wb
 
 # Create reviews file if it doesn't exist
 if not os.path.exists('reviews.json'):
@@ -13,6 +14,8 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
 )
+
+st.markdown("""<br><br>""", unsafe_allow_html=True)
 
 # Global CSS to remove white boxes and style elements
 st.markdown("""
@@ -202,7 +205,7 @@ with col1:
     if st.sidebar.button("Sign Up"):
         st.session_state.is_logged_in = False
         st.session_state.user = None
-        st.switch_page("pages/Signup.py")
+        wb.open("https://radiantsuds.streamlit.app/pages/signup.py")
 with col2:
     if st.sidebar.button("Login"):
         st.session_state.is_logged_in = False
@@ -233,13 +236,13 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    if st.session_state.is_logged_in:
+    # if user is not logged in ,display a message to log in, else redirect to shop page
+    if "is_logged_in" not in st.session_state or not st.session_state.is_logged_in:
+        st.warning("Please log in to access the shop.")
+    else:
         st.session_state.is_logged_in = True
         st.session_state.user = "User"
-        st.success("Redirecting to the shop...")
         st.switch_page("pages/Shop.py")
-    else:
-        st.warning("Please log in to access the shop.")
 
 # Feedback section
 with st.sidebar:
@@ -267,10 +270,12 @@ with open('reviews.json', 'r') as f:
 if reviews:
     for review in reviews:
         intr = st.empty()
-        with st.expander(f"Rating: {review['rating']}"):
+        with st.expander(f"Read comment - {review['rating']}"):
             st.write(f"{review['rating']} - {review['comment']}")
         intr.markdown("---")
         intr.empty()
         st.markdown("<hr>", unsafe_allow_html=True)
 else:
     st.info("No feedback yet. Be the first to leave a comment!")
+
+st.markdown("""<br><br>""", unsafe_allow_html=True)

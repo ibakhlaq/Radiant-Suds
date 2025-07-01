@@ -1,4 +1,5 @@
 import streamlit as st
+import webbrowser as wb
 
 st.set_page_config(page_title="Checkout", layout="wide", page_icon="", initial_sidebar_state="collapsed")
 

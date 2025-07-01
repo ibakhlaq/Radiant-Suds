@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import streamlit.components.v1 as components
+import webbrowser as wb
 
 st.set_page_config(page_title="Shop", layout="centered", page_icon="🛒",initial_sidebar_state = "expanded")
 st.title("🧺 Products")
