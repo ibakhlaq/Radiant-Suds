@@ -266,7 +266,11 @@ with open('reviews.json', 'r') as f:
 
 if reviews:
     for review in reviews:
+        intr = st.empty()
         with st.expander(f"Rating: {review['rating']}"):
             st.write(f"{review['rating']} - {review['comment']}")
+        intr.markdown("---")
+        intr.empty()
+        st.markdown("<hr>", unsafe_allow_html=True)
 else:
     st.info("No feedback yet. Be the first to leave a comment!")
