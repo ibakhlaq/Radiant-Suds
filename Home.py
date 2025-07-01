@@ -181,7 +181,7 @@ st.markdown("""
     </style>
 
     <div class="custom-footer">
-        💫 Radiant Suds &nbsp; | &nbsp; Beautiful Skin, Naturally Yours &nbsp; | &nbsp; © 2025 All rights reserved
+        🛁 Radiant Suds &nbsp; | &nbsp; Beautiful Skin, Naturally Yours &nbsp; | &nbsp; © 2025 All rights reserved
     </div>
 """, unsafe_allow_html=True)
 
@@ -202,12 +202,12 @@ with col1:
     if st.sidebar.button("Sign Up"):
         st.session_state.is_logged_in = False
         st.session_state.user = None
-        st.switch_page("radiantsuds.streamlit.app/signup")
+        st.switch_page("pages/Signup.py")
 with col2:
     if st.sidebar.button("Login"):
         st.session_state.is_logged_in = False
         st.session_state.user = None
-        st.switch_page("radiantsuds.streamlit.app/login")
+        st.switch_page("pages/Login.py")
 
 # Header + Info
 st.markdown('<div class="title-card">🛁 Radiant Suds Soap (home delivery)</div>', unsafe_allow_html=True)
@@ -233,7 +233,7 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("radiantsuds.streamlit.app/Shop")
+    st.switch_page("pages/Shop.py")
 
 # Feedback section
 with st.sidebar:

@@ -162,10 +162,10 @@ if st.session_state.show_toast:
 
 st.markdown("---")
 if st.button("🛒 View Cart / Checkout"):
-    st.switch_page("radiantsuds.streamlit.app/Checkout")
+    st.switch_page("pages/Checkout.py")
 
 if st.button("🏠 Back to Home"):
-    st.switch_page("radiantsuds.streamlit.app")
+    st.switch_page("Home.py")
 
 if session == True:
     st.rerun()

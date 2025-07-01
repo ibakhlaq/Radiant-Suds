@@ -117,9 +117,9 @@ cart = st.session_state.get("cart", {})
 if not cart:
     st.error("Your cart is empty.")
     if st.button("GO TO SHOP", key="go_to_shop_empty"):
-        st.switch_page("radiantsuds.streamlit.app/Shop")
+        st.switch_page("pages/Shop.py")
     if st.button("GO TO MAIN PAGE", key="go_to_home_empty"):
-        st.switch_page("radiantsuds.streamlit.app")
+        st.switch_page("Home.py")
 else:
     st.subheader("Cart Items:")
     total = 0
@@ -143,6 +143,6 @@ else:
     # Navigation Section
     if cart:
         if st.button("BACK TO SHOP", key="back_to_shop"):
-            st.switch_page("radiantsuds.streamlit.app/Shop")
+            st.switch_page("pages/Shop.py")
         if st.button("BACK TO HOME", key="back_to_home"):
-            st.switch_page("radiantsuds.streamlit.app")
+            st.switch_page("Home.py")

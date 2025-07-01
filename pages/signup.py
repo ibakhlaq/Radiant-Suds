@@ -53,4 +53,4 @@ with st.form("signup_form"):
 if st.button("Go to Login Page", key="login_button"):
     st.session_state.is_logged_in = False
     st.session_state.user = None
-    st.switch_page("radiantsuds.streamlit.app/login")
+    st.switch_page("pages/Login.py")
