@@ -233,7 +233,10 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.markdown("""<meta http-equiv="refresh" content="0; url='pages/Shop.py'" />""", unsafe_allow_html=True)
+    redirect_url = "https://radiantsuds.streamlit.app/pages/Shop"  # Full public URL of the target page
+    st.markdown(f"""
+    <meta http-equiv="refresh" content="1; url={redirect_url}">
+    """, unsafe_allow_html=True)
 
 # Feedback section
 with st.sidebar:
