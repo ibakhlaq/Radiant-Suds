@@ -233,10 +233,13 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    redirect_url = "https://radiantsuds.streamlit.app/pages/Shop"  # Full public URL of the target page
-    st.markdown(f"""
-    <meta http-equiv="refresh" content="1; url={redirect_url}">
-    """, unsafe_allow_html=True)
+    if st.session_state.is_logged_in:
+        st.session_state.is_logged_in = True
+        st.session_state.user = "User"
+        st.success("Redirecting to the shop...")
+        st.switch_page("pages/Shop.py")
+    else:
+        st.warning("Please log in to access the shop.")
 
 # Feedback section
 with st.sidebar:
