@@ -20,6 +20,7 @@ st.markdown("<h1 style='text-align: center; color: #0bb; padding: 20px'> Login</
 # Button Styling
 st.markdown("""
     <style>
+        #MainMenu, footer, header {visibility: hidden;}
         .stButton > button {
             background-color: #8BC34A;
             color: white;

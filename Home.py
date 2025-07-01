@@ -233,7 +233,7 @@ else:
 
 # Shop button
 if st.sidebar.button("🛍️ Shop Radiant Suds - Reasonable Prices, Reasonable beauty, Reasonable Everything"):
-    st.switch_page("pages/Shop.py")
+    st.switch_page("pages/Shop")
 
 # Feedback section
 with st.sidebar:

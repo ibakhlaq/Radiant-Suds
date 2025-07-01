@@ -9,7 +9,11 @@ if not os.path.exists('users.json'):
 
 # Set Streamlit page settings
 st.set_page_config(page_title="Sign Up", layout="wide", page_icon="", initial_sidebar_state="collapsed")
-
+st.markdown("""
+    <style>
+        #MainMenu, footer, header {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
 # Heading
 st.markdown("<h1 style='text-align: center; color: #0bb; padding: 20px'> Sign Up</h1>", unsafe_allow_html=True)
 
